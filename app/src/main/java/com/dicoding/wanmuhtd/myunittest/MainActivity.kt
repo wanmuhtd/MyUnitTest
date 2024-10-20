@@ -40,12 +40,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             TextUtils.isEmpty(length) -> {
                 activityMainBinding.edtLength.error = "Field ini tidak boleh kosong"
             }
+
             TextUtils.isEmpty(width) -> {
                 activityMainBinding.edtWidth.error = "Field ini tidak boleh kosong"
             }
+
             TextUtils.isEmpty(height) -> {
                 activityMainBinding.edtHeight.error = "Field ini tidak boleh kosong"
             }
+
             else -> {
                 val valueLength = length.toDouble()
                 val valueWidth = width.toDouble()
@@ -55,14 +58,19 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                         mainViewModel.save(valueLength, valueWidth, valueHeight)
                         visible()
                     }
+
                     R.id.btn_calculate_circumference -> {
-                        activityMainBinding.tvResult.text = mainViewModel.getCircumference().toString()
+                        activityMainBinding.tvResult.text =
+                            mainViewModel.getCircumference().toString()
                         gone()
                     }
+
                     R.id.btn_calculate_surface_area -> {
-                        activityMainBinding.tvResult.text = mainViewModel.getSurfaceArea().toString()
+                        activityMainBinding.tvResult.text =
+                            mainViewModel.getSurfaceArea().toString()
                         gone()
                     }
+
                     R.id.btn_calculate_volume -> {
                         activityMainBinding.tvResult.text = mainViewModel.getVolume().toString()
                         gone()
@@ -71,12 +79,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
         }
     }
+
     private fun visible() {
         activityMainBinding.btnCalculateVolume.visibility = View.VISIBLE
         activityMainBinding.btnCalculateCircumference.visibility = View.VISIBLE
         activityMainBinding.btnCalculateSurfaceArea.visibility = View.VISIBLE
         activityMainBinding.btnSave.visibility = View.GONE
     }
+
     private fun gone() {
         activityMainBinding.btnCalculateVolume.visibility = View.GONE
         activityMainBinding.btnCalculateCircumference.visibility = View.GONE
